@@ -9,7 +9,7 @@ AllCops:
     - 'log/**/*'
     - 'tmp/**/*'
 
-Lint/EndAlignment:
+Layout/EndAlignment:
   EnforcedStyleAlignWith: variable
 
 Lint/UnusedMethodArgument:
@@ -23,19 +23,19 @@ Layout/AlignArray:
 
 Layout/AlignParameters:
   EnforcedStyle: with_fixed_indentation
+  Exclude:
+    - 'config/initializers/*'
 
 Style/BracesAroundHashParameters:
   Enabled: false
 
+Style/ExpandPathArguments:
+  Exclude:
+    - 'spec/rails_helper.rb'
+
 Layout/CaseIndentation:
   EnforcedStyle: end
 
-# This is disabled because it wants parens to look like this:
-#
-#   campaign = Fabricate(:campaign,
-#     name: "Foo"
-#                       )
-# Yuck.
 Layout/ClosingParenthesisIndentation:
   Enabled: false
 
@@ -54,9 +54,8 @@ Style/IfUnlessModifier:
 Layout/MultilineOperationIndentation:
   EnforcedStyle: indented
 
-# This would forbid appending `rescue nil`
 Style/RescueModifier:
-  Enabled: false
+  Enabled: true
 
 # This is the rule that enforces single quotes.
 Style/StringLiterals:
@@ -67,3 +66,13 @@ Style/WordArray:
 
 Metrics/ModuleLength:
   Max: 250
+
+Metrics/BlockLength:
+  ExcludedMethods:
+    - context
+    - describe
+    - it
+    - shared_examples
+    - shared_examples_for
+    - namespace
+    - draw

@@ -5,14 +5,14 @@ default: &default
 
 development:
   <<: *default
-  database: development
+  database: metafield_sync_dev
 
 test:
   <<: *default
-  database: test
+  database: metafield_sync_test
 
 production:
   <<: *default
-  database: production
+  database: metafield_sync_production
   pool: 20
   timeout: 5000

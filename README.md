@@ -1,31 +1,26 @@
-# Shopify App Starter Kit
+# Shopify MetafieldSync
 
-The Rails app with appropriate tools for quick starting developing shopify app.
+MetafieldSync is a Shopify app used to sync metafields between two different stores. The project is intended to be an open source example of a full Shopify app and was started using the shopify-app-starter-kit from ASoftCo.
 
-**How to install?**
+## How to install?
 
-1. `git clone https://github.com/ASoftCo/shopify-app-starter-kit.git`
-2. `cd shopify-app-starter-kit`
-3. `git remote set-url origin new_git_repo_url`
-4. `bundle install && bundle exec rails db:create db:migrate`
-5. Install and run [Redis](https://redis.io/download)
-6. Rename the app module in the `config/application.rb` file
-7. Install [ngrok](https://ngrok.com/)
-8. Create a new app in your [shopify partner account](https://partners.shopify.com/organizations)  
-  - use ngrok url as a `App URL` in the `App setup` section  
-  - add `whitelisted redirection URL(s)`:  
-    http://<your_ngrok_host>/auth/shopify/callback  
-    https://<your_ngrok_host>/auth/shopify/callback  
-9. `rails credentials:edit` and add all settings from `config/credentials_sample.yml`
-10. Change all credential values in your `config/credentials.yml.enc` file to appropriate ones.
-  - change `api_key` and `secret` (can be found at the `App setup` section)
-  - change `host` setting to your ngrok url
-  - add [necessary shopify scopes](https://help.shopify.com/api/getting-started/authentication/oauth#scopes)
-  - add [necessary shopify webhooks](https://help.shopify.com/api/reference/webhook)
-11. Add necessary workers to the `app/jobs/` directory (e.g. if you add `orders/create` webhook, you should create `orders_create_job.rb` worker)
-12. For UI and CSS styles read about [Polaris](https://polaris.shopify.com/) or [Uptown CSS](http://www.uptowncss.com/)
+1. `git clone https://github.com/colinsoleim/shopify-metafieldsync.git`
+2. `bundle install`
+3. `bundle exec rails db:create db:migrate`
+4. Install and run [Redis](https://redis.io/download)
+5. Install [ngrok](https://ngrok.com/)
+6. `~/ngrok http 3000`
+7. `rails s`
+8. If installation was successful, going to `http://localhost:3000` should give you the Shopify installation window.
 
-**Monitoring**
+## Contributing
 
-There are several monitoring tools: [New Relic](https://newrelic.com), [Sentry](https://sentry.io) and [Mixpanel](https://mixpanel.com).
-All that you need to do is to change the values of appropriate keys (`new_relic_license_key`, `sentry_dsn`, `mix_panel_token`) for your environment in the `config/credentials.yml.enc` file.
+Bug reports and pull requests are welcome on GitHub. This project is
+intended to be a safe, welcoming space for collaboration, and contributors are
+expected to adhere to the
+[Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## License
+
+The gem is available as open source under the terms of the
+[MIT License](https://opensource.org/licenses/MIT).

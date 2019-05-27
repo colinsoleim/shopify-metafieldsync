@@ -1,0 +1,14 @@
+language: ruby
+cache: bundler
+rvm: 
+  - 2.6
+env:
+  secure: c8ZjoX6udJaaCsEnXSsbjyZG6G9C3LkI/6MgoAgYIi+SUXSt4m2DR6rckj7XZFFpRlrXxyg2n/Q0f82sIjptkFvG+HGVF1m/5HtIjYY6w7emWr7b+AXg00ancfItdt4o+VjedXQxaFEEw7bYSmyxrgvTIq5iswIwhqLlQrULA1RqcSNhfLLDZd5UildQusGCoP1lQ0sDMSAcD8vWf2GkJu36Is4WdZY/5TFfmotyhb83P0lJq8X1Fg1Um8uSgs/G7BEuawB5jxLwJaQFoGztq2ZpT+9bxnkPI+TUk0yLVlFx4y1wGjIAgsx3InR+0s42R8BvSWG3O4FiqWkwcTERy6bmzVu/OFD92N3n5b+rPqiV01SFAWHpp9oI7YnRxWsLQ/cmFGg9/a9kTruWiZxvpzs5K/Uor83Fye1pX+HarGVUPH3T1GUWyNPwwZIXYusHmpvL9GDOe00oxdxQTAP2vmajTIA8AvD0AdyKTrkMB+IvjTQ/LqX2S1Q9ZBRDygmloimXPzDkM1xGYCS6sWBJOPWHj0PVq2l9fu3mxAQAXwqf+FnV+qYhSXT2KEt0HQO/WiuS9Oh3v0IWNQw+yO4P+MFfWc1V5w8B3Cdz2oh2p8kXmE+Zu6Mvgphj2EnhhS5lHL3GFEvF9fY/wtilslu0qt4jc9UhXe9J7y7cG/4vcmk=
+services:
+  - postgresql
+before_script:
+  - cp config/database.yml.travis config/database.yml
+  - psql -c 'create database travis_ci_test;' -U postgres
+script:
+  - bundle exec rspec
+  - bundle exec rubocop
