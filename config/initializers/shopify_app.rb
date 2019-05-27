@@ -1,8 +1,8 @@
 ShopifyApp.configure do |config|
-  config.application_name = Rails.application.credentials.shopify_app[:name]
+  config.application_name = "My Template"
   config.api_key = Rails.application.credentials.shopify_app[:api_key]
   config.secret = Rails.application.credentials.shopify_app[:secret]
-  config.scope = Rails.application.credentials.shopify_app[:scopes].join(",")
+  config.scope = "read_products"
 
   config.session_repository = Shop
   config.embedded_app = true

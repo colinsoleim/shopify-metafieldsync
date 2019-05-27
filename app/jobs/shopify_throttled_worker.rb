@@ -6,7 +6,7 @@
 
 class ShopifyThrottledWorker
   include Sidekiq::Worker
-	include Sidekiq::Throttled::Worker
+  include Sidekiq::Throttled::Worker
 
   EXCEPTIONS = [
     ActiveResource::UnauthorizedAccess,
