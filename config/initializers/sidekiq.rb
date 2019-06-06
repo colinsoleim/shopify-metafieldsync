@@ -1,27 +1,21 @@
-require 'sidekiq'
-require 'sidekiq/web'
-require "sidekiq/throttled"
-
-Sidekiq::Throttled.setup!
+require "sidekiq"
+require "sidekiq/web"
+require "sidekiq-rate-limiter/server"
 
 unless Rails.env.development?
   Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
-    user == Rails.application.credentials.sidekiq_user &&
-      password == Rails.application.credentials.sidekiq_password
+    user == ENV["SIDEKIQ_USER"] &&
+      password == ENV["SIDEKIQ_PASSWORD"]
   end
 end
 
 Sidekiq.configure_server do |config|
   config.logger = nil
-  config.redis = { url: Rails.application.credentials.redis_queue_uri }
-
-  config.server_middleware do |chain|
-    chain.add Sidekiq::Throttler, storage: :redis
-  end
+  config.redis = { url: ENV["REDIS_QUEUE_URI"] }
 end
 
 Sidekiq.configure_client do |config|
-  config.redis = { url: Rails.application.credentials.redis_queue_uri }
+  config.redis = { url: ENV["REDIS_QUEUE_URI"] }
 end
 
 Sidekiq::Logging.logger.level = Logger::WARN

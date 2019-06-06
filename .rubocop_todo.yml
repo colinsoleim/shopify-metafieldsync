@@ -1,3 +1,5 @@
+require: rubocop-performance
+
 # Configuration parameters: CountComments.
 Metrics/ClassLength:
   Max: 200

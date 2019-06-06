@@ -1,5 +1,5 @@
 class HomeController < AuthenticatedController
   def index
-    @products = ShopifyAPI::Product.last
+    @products = ShopifyAPI::Product.all
   end
 end
