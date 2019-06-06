@@ -9,7 +9,7 @@ class AuthenticatedController < ShopifyApp::AuthenticatedController
     @shop ||= Shop.find_by_shopify_domain(shop_domain)
   end
 
-private
+  private
 
   def set_raven_context
     Raven.user_context(id: shop&.id)

@@ -1,14 +1,23 @@
 language: ruby
 cache: bundler
-rvm: 
-  - 2.6
+rvm:
+- 2.6
 env:
-  secure: c8ZjoX6udJaaCsEnXSsbjyZG6G9C3LkI/6MgoAgYIi+SUXSt4m2DR6rckj7XZFFpRlrXxyg2n/Q0f82sIjptkFvG+HGVF1m/5HtIjYY6w7emWr7b+AXg00ancfItdt4o+VjedXQxaFEEw7bYSmyxrgvTIq5iswIwhqLlQrULA1RqcSNhfLLDZd5UildQusGCoP1lQ0sDMSAcD8vWf2GkJu36Is4WdZY/5TFfmotyhb83P0lJq8X1Fg1Um8uSgs/G7BEuawB5jxLwJaQFoGztq2ZpT+9bxnkPI+TUk0yLVlFx4y1wGjIAgsx3InR+0s42R8BvSWG3O4FiqWkwcTERy6bmzVu/OFD92N3n5b+rPqiV01SFAWHpp9oI7YnRxWsLQ/cmFGg9/a9kTruWiZxvpzs5K/Uor83Fye1pX+HarGVUPH3T1GUWyNPwwZIXYusHmpvL9GDOe00oxdxQTAP2vmajTIA8AvD0AdyKTrkMB+IvjTQ/LqX2S1Q9ZBRDygmloimXPzDkM1xGYCS6sWBJOPWHj0PVq2l9fu3mxAQAXwqf+FnV+qYhSXT2KEt0HQO/WiuS9Oh3v0IWNQw+yO4P+MFfWc1V5w8B3Cdz2oh2p8kXmE+Zu6Mvgphj2EnhhS5lHL3GFEvF9fY/wtilslu0qt4jc9UhXe9J7y7cG/4vcmk=
+  secure: "HOxyLVQQV24kMh+X4RvWi/S/03WVHweXYqZiHGsFy2tJf6vUvkTDuNZoFC6vF3+6yGoRvdHSxbTFVqUuJg0md7vMsApKrT+W4FNzmGNtL6MoHdPX20kE18pOj+g+LhUm1qArhBc4RX+R9xvOF689uGnl4D7LE6CVqfyV7+jw7/KdC/TTZeWT0Nku50rol4W2cLNpOxtc5ZzDMwVVcs0qw9RgiRiPU0hyAltGLEuvWc3UsiRIlP1fVKPtbf33RdqZVxQvNe5RlP0L+4LFhKcdXyE7ZkMbyKEdtS6Hn/0x3CnYrlxqZUrhaC+3CObkfCQTvT7au4HFCUZeADlKY144MoZRowTl13ul5zbrRBnC2jqGgIv8WR++jFD0C0togUG59fNYQgK3KkDPHNKhL+AcpO8M/09E75lWoZMV3ix0Eh33BF3bJsIjKj23veT5pYoGY5mUFIwNbOXTbncWbeTfDXDxH9iVtGc12195en2wL1G8rchOsypiKCCOUg6LbhhOxLOLbtCVdJh6xDjkbtK92JKrgs+KGrSODORg27qtxknjzLo+PMpDUNmfMnGzA+VPIbFMdCQe83t/Fk1cyGQ9oxB2JNx+IpIvBKBiuyR4G8Ilr2aWJ93mRlogb/sHkuB19sUuWaDRp2MgQdOyf0g6h8GxMCv0Lr0HeztyA3HRN2A="
+  global:
+    secure: "nPoG5tRPO9YzqbrdttOB7IRBLq5QI6fRvpjWtf/EGDFgQOFlo1vUAjnd8RyZ+SB/dNqTOfvb3oN9hUn/RF/uKQY7DUxyA5XViMk57CdCdaC3ml3ZVyyNBzGoec8ZxpsqGrApUSfkQNcXWQb3+T6sunKgdXooAWy2pbXptrAi+Xme5M6j5H6gL8fP+GIeXxkxDOTZfJULZ49ty85+e1r8j2uqojT4Ejunl9zIaDmc2V0uNzuhLG0r1mjI4rTq0d46zTPUhRZHClQQnPEwj/3h4GfisnypD59lLjnS0a91th07TMCbU9BblVwsBYK+NiJdKAlgpNfYPjFlNHP1X4swbTGwXGLp77CV1ITmOglIqDLTkTivmmz13Tex1hbMtFdWa0Sv+R2RYlGO2XZ7XKb+MDKjd+JxO+DG0xcshzAtMeSNl/qKsUaXIJql+1zNbV0vM4qbAdLJSdEuc9MQJ5fPH7tP0sOvT1uCZfH6+Ll12fE0F5uHvZjWh2sTUCWWOuis0cAL6VjLug4+XnWdpNwS55LRq5hjrDxxIdtCN+4ZtMdme742mk4Ugr+eTG2/T3xcCSrkQIIUHKONFrSKcAEwMB/iUUfUp6Xaaj/GHbk9DaxM3suSuji0d9s9yGhFP46q3QbQk5nSU5c6OzpmHZKk1dem45WjXjZApCrmmpjvOsE="
 services:
-  - postgresql
+- postgresql
+- redis-server
 before_script:
-  - cp config/database.yml.travis config/database.yml
-  - psql -c 'create database travis_ci_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+- psql -c 'create database travis_ci_test;' -U postgres
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 script:
-  - bundle exec rspec
-  - bundle exec rubocop
+- bundle exec rspec
+- bundle exec rubocop
+after_script:
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"

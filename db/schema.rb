@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2017_07_18_125423) do
+ActiveRecord::Schema.define(version: 2019_06_05_202523) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "metafields", force: :cascade do |t|
+    t.string "key"
+    t.string "value"
+    t.string "value_type"
+    t.string "namespace"
+    t.string "description"
+    t.string "owner_id"
+    t.string "owner_resource"
+    t.string "shopify_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "shops", force: :cascade do |t|
     t.string "shopify_domain", null: false
