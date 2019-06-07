@@ -9,6 +9,9 @@ env:
 services:
 - postgresql
 - redis-server
+before_install:
+- gem update --system
+- gem install -v 2.0.1 bundler
 before_script:
 - cp config/database.yml.travis config/database.yml
 - psql -c 'create database travis_ci_test;' -U postgres

@@ -20,7 +20,6 @@ describe MetafieldSyncer do
         shop = create(:shop)
         metafield = build(:metafield)
         shop.activate_shopify_session
-        
         expect do
           MetafieldImporter.call(
             shop_id: shop.id,
