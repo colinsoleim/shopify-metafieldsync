@@ -48,18 +48,19 @@ end
 
 group :test do
   gem "capybara", ">= 2.15", "< 4.0", require: false
-  gem "capybara_discoball"                                # Creates A Fake Shopify For Testing
+  gem "capybara_discoball"                                # Creates a fake Shopify for testing
   gem "chromedriver-helper", require: false
   gem "database_cleaner"                                  # DB resets between tests
   gem "factory_bot_rails"
   gem "faker"
   gem "launchy"                                           # Easier launch commands
   gem "parallel_tests"
+  gem "rails-controller-testing"                          # Rails controller testing
   gem "rspec-rails", "~> 3.6"
   gem "rspec-sidekiq"
   gem "selenium-webdriver", require: false
   gem "simplecov", require: false                         # Test coverage
-  gem "sinatra"                                           # Creates A Fake Shopify For Testing
+  gem "sinatra"                                           # Creates a fake Shopify for testing
   gem "timecop"                                           # Improve control of time in tests
   gem "vcr"
   gem "webmock"                                           # Mock HTTP requests
