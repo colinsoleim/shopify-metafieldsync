@@ -20,19 +20,4 @@ class MetafieldSyncer
       ),
     )
   end
-
-  private
-
-  def metafield
-    # Metafield.find options()
-    Metafield.find_or_create_by(
-      key: "key",
-      value: "value",
-      value_type: "string",
-      namespace: "namespace",
-      description: "description",
-      owner_id: "owner_id",
-      owner_resource: "owner_resource",
-    )
-  end
 end

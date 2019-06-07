@@ -23,7 +23,5 @@ class ShopifyThrottledWorker
     options["service"].safe_constantize.call(
       MultiJson.load(options["args"]).deep_symbolize_keys,
     )
-  rescue *EXCEPTIONS => e
-    Rails.logger.error(e)
   end
 end

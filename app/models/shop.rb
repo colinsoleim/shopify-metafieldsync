@@ -14,8 +14,20 @@ class Shop < ActiveRecord::Base
     ShopifyAPI::Base.activate_session(session)
   end
 
-  def pull_metafields_from(shop, scope = "all")
-    metafields = MetafieldFinder.new(shop, scope)
-    SyncMetafieldsWorker.perform_async(shop, metafields)
+  def metafields
+    Metafield.all
+  end
+
+  def pull_metafields_from(metafield_parent)
+    metafields = MetafieldFinder.new(metafield_parent).metafields
+    metafields.each do |metafield|
+      ShopifyThrottledWorker.perform_async(
+        service: "MetafieldSyncer",
+        args: MultiJson.dump(
+          shop_id: id,
+          shopify_metafield_id: metafield.shopify_id,
+        ),
+      )
+    end
   end
 end
