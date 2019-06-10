@@ -1,6 +1,22 @@
 class Shop < ActiveRecord::Base
   include ShopifyApp::SessionStorage
 
+  def related_shops
+    Shop.all
+  end
+
+  def metafield_syncs
+    MetafieldSync.all
+  end
+
+  def autosync_runners
+    MetafieldSync.all
+  end
+
+  def sync_token
+    SecureRandom.hex
+  end
+
   def api_version
     ShopifyApp.configuration.api_version
   end

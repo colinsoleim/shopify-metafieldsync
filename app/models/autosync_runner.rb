@@ -1,0 +1,2 @@
+class AutosyncRunner < ApplicationRecord
+end

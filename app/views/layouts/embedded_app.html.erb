@@ -12,9 +12,18 @@
   <body>
     <div class="app-wrapper">
       <div class="app-content">
-        <main role="main">
-          <%= yield %>
-        </main>
+        <div class="page" id="app">
+          <div class="page-item">
+            <div class="container">
+              <%= render 'layouts/header' %>
+              <%= render 'layouts/top_navigation' %>
+              <main role="main">
+                <%= yield %>
+              </main>
+              <%= render 'layouts/footer' %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
