@@ -1,0 +1,9 @@
+ <section class="navigation">
+    <ul class="tabs" role="tablist">
+      <li><%= active_link_to 'Dashboard', root_path, active: :exclusive %></li>
+      <li><%= active_link_to 'Your Shops', related_shops_path, active: :exclusive %></li>
+      <li><%= active_link_to 'Sync History', metafield_syncs_path, active: :exclusive %></li>
+      <li><%= active_link_to 'Auto-Sync Settings', autosync_runners_path, active: :exclusive %></li>
+      <li><%= active_link_to 'Account', edit_shop_path(@shop), active: :exclusive %></li>
+    </ul>
+ </section>

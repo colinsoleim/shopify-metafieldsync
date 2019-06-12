@@ -10,10 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_05_202523) do
+ActiveRecord::Schema.define(version: 2019_06_11_152419) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "autosync_runners", force: :cascade do |t|
+    t.integer "export_from_shop_id"
+    t.integer "import_to_shop_id"
+    t.datetime "last_started_at"
+    t.datetime "last_ended_at"
+    t.integer "master_shop_id"
+    t.datetime "next_start_at"
+    t.string "frequency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "metafield_syncs", force: :cascade do |t|
+    t.integer "export_from_shop_id"
+    t.integer "import_to_shop_id"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.string "status"
+    t.integer "master_shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "metafields", force: :cascade do |t|
     t.string "key"

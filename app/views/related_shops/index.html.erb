@@ -1,0 +1,36 @@
+<h1 class="title">Your Shops</h1>
+<section>
+  <article>
+    <div class="card">
+      <div class="overflow-container">
+        <table class="results">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Sync Token</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
+              <td><%= @shop.sync_token %></td>
+              <td><button class="secondary">View Report</button></td>
+            </tr>
+            <tr>
+              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
+              <td><%= @shop.sync_token %></td>
+              <td><button class="secondary">View Report</button></td>
+            </tr>
+            <tr>
+              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
+              <td><%= @shop.sync_token %></td>
+              <td><button class="secondary">View Report</button></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </article>
+</section>

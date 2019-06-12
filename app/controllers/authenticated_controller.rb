@@ -1,5 +1,6 @@
 class AuthenticatedController < ShopifyApp::AuthenticatedController
   before_action :set_raven_context
+  # layout 'application'
 
   def shop_domain
     @shop_domain ||= shop_session.url

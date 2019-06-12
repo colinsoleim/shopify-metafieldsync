@@ -8,9 +8,8 @@ class MetafieldSyncer
 
   def call
     metafield = Metafield.find options[:metafield_id]
-    owner = metafield.get_owner
 
-    owner.add_metafield(
+    metafield.parent.add_metafield(
       ShopifyAPI::Metafield.new(
         "key": metafield.key,
         "value": metafield.value,

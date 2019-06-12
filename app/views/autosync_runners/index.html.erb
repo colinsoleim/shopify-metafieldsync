@@ -1,0 +1,48 @@
+<h1 class="title">All Sync Reports</h1>
+<section>
+  <article>
+    <div class="card">
+      <div class="overflow-container">
+        <table class="results">
+          <thead>
+            <tr>
+              <th>Export From</th>
+              <th>Import To</th>
+              <th>Last Run At</th>
+              <th>Next Run At</th>
+              <th>Frequency</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
+              <td><%= "412-test-importer.myshopify.com".remove(".myshopify.com") %></td>
+              <td><%= (Time.now).strftime('%b %e, %l:%M %p') %></td>
+              <td><%= (Time.now + rand(200).minutes).strftime('%b %e, %l:%M %p') %></td>
+              <td>Hourly</td>
+              <td><button class="" style="margin-right:5px;">Edit</button><button class="warning">Delete</button></td>
+            </tr>
+            <tr>
+              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
+              <td><%= "412-test-importer.myshopify.com".remove(".myshopify.com") %></td>
+              <td><%= (Time.now).strftime('%b %e, %l:%M %p') %></td>
+              <td><%= (Time.now + rand(200).minutes).strftime('%b %e, %l:%M %p') %></td>
+              <td>Daily</td>
+              <td><button class="" style="margin-right:5px;">Edit</button><button class="warning">Delete</button></td>
+            </tr>
+            <tr>
+              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
+              <td><%= "412-test-importer.myshopify.com".remove(".myshopify.com") %></td>
+              <td><%= (Time.now).strftime('%b %e, %l:%M %p') %></td>
+              <td><%= (Time.now + rand(200).minutes).strftime('%b %e, %l:%M %p') %></td>
+              <td>Weekly</td>
+              <td><button class="" style="margin-right:5px;">Edit</button><button class="warning">Delete</button></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </article>
+</section>

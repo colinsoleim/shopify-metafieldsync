@@ -1,5 +1,5 @@
 ShopifyApp.configure do |config|
-  config.application_name = "My Template"
+  config.application_name = "MetafieldMatch"
   config.api_key = ENV["SHOPIFY_API_KEY"]
   config.secret = ENV["SHOPIFY_SECRET"]
   config.scope = "read_products,write_products"

@@ -1,5 +1,5 @@
 class Metafield < ApplicationRecord
-  def get_owner
+  def parent
     # find match by handle for now
     ShopifyAPI::Product.last
   end
