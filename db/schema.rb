@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_11_152419) do
+ActiveRecord::Schema.define(version: 2019_06_18_143238) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,17 +23,6 @@ ActiveRecord::Schema.define(version: 2019_06_11_152419) do
     t.integer "master_shop_id"
     t.datetime "next_start_at"
     t.string "frequency"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "metafield_syncs", force: :cascade do |t|
-    t.integer "export_from_shop_id"
-    t.integer "import_to_shop_id"
-    t.datetime "started_at"
-    t.datetime "ended_at"
-    t.string "status"
-    t.integer "master_shop_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,11 +40,27 @@ ActiveRecord::Schema.define(version: 2019_06_11_152419) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "shop_syncs", force: :cascade do |t|
+    t.integer "export_from_shop_id"
+    t.integer "import_to_shop_id"
+    t.datetime "started_at"
+    t.datetime "ended_at"
+    t.string "status"
+    t.integer "master_shop_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string "shopify_domain", null: false
     t.string "shopify_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "sync_token"
+    t.integer "master_shop_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
   end
 

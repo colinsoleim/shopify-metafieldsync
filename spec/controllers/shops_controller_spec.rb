@@ -17,5 +17,17 @@ describe ShopsController do
 
       expect(response).to render_template("shops/edit")
     end
+
+    it "redirects to edit_shop_path" do
+      put :update, params: { id: @shop.id, shop: { first_name: "asdf", last_name: "asdf", email: "asdf" } }
+
+      expect(controller).to redirect_to(edit_shop_path)
+    end
+
+    it "redirects to edit_shop_path" do
+      put :update, params: { id: @shop.id, shop: { first_name: "asdf", last_name: "asdf", email: nil } }
+
+      expect(controller).to redirect_to(edit_shop_path)
+    end
   end
 end

@@ -1,0 +1,29 @@
+<h1 class="title">Sync Report</h1>
+<section>
+  <article>
+    <div class="card">
+      <div class="overflow-container">
+        <table class="results">
+          <thead>
+            <tr>
+              <th>Exported From</th>
+              <th>Imported To</th>
+              <th>Started At</th>
+              <th>Finished At</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @shop_sync.export_from_shop.shopify_domain.remove(".myshopify.com") %></td>
+              <td><%= @shop_sync.import_to_shop.shopify_domain.remove(".myshopify.com") %></td>
+              <td><%= @shop_sync.started_at.strftime('%b %e, %l:%M %p') %></td>
+              <td><%= @shop_sync.ended_at.strftime('%b %e, %l:%M %p') %></td>
+              <td><span class="tag green"><%= @shop_sync.status %></span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </article>
+</section>

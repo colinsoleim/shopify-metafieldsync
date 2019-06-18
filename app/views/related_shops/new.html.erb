@@ -1,1 +1,43 @@
-new.html.erb
+<section>
+  <aside>
+    <h2>Add An Existing Shop</h2>
+    <p>If you've already installed the SyncEverything app on your other store, enter your sync token here to tie your other shop to the same account.</p>
+  </aside>
+  <article>
+    <div class="card has-sections contact-info">
+      <form action="/related_shops" method="POST">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+        <div class="card-section">
+          <div class="form-group">
+            <label class="form-label">Sync Token </label>
+            <input name="sync_token" type="text">
+          </div>
+          <button type="submit">Submit Token</button>
+        </div>
+      </form>
+    </div>
+  </article>
+</section>
+<section>
+  <aside>
+    <h2>Send A New Shop Invitation</h2>
+    <p>If you haven't installed the SyncEverything app on your other store, enter your shop domain here and we'll give you instructions for how to tie it to your account.</p>
+  </aside>
+  <article>
+    <div class="card has-sections contact-info">
+      <form>
+        <div class="card-section">
+          <div class="form-group">
+            <label class="form-label">New Shop Domain</label>
+            <input name="sync_token" type="text">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input name="sync_token" type="text" value="<%= @shop.email %>">
+          </div>
+          <button type="submit">Submit Invitation</button>
+        </div>
+      </form>
+    </div>
+  </article>
+</section>

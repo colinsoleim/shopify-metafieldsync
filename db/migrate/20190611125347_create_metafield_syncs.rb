@@ -1,6 +1,6 @@
 class CreateMetafieldSyncs < ActiveRecord::Migration[5.2]
   def change
-    create_table :metafield_syncs do |t|
+    create_table :shop_syncs do |t|
       t.integer :export_from_shop_id
       t.integer :import_to_shop_id
       t.datetime :started_at

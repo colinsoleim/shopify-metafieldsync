@@ -15,31 +15,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
-              <td><%= "412-test-importer.myshopify.com".remove(".myshopify.com") %></td>
-              <td><%= (Time.now).strftime('%b %e, %l:%M %p') %></td>
-              <td><%= (Time.now + rand(200).minutes).strftime('%b %e, %l:%M %p') %></td>
-              <td>Hourly</td>
-              <td><button class="" style="margin-right:5px;">Edit</button><button class="warning">Delete</button></td>
-            </tr>
-            <tr>
-              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
-              <td><%= "412-test-importer.myshopify.com".remove(".myshopify.com") %></td>
-              <td><%= (Time.now).strftime('%b %e, %l:%M %p') %></td>
-              <td><%= (Time.now + rand(200).minutes).strftime('%b %e, %l:%M %p') %></td>
-              <td>Daily</td>
-              <td><button class="" style="margin-right:5px;">Edit</button><button class="warning">Delete</button></td>
-            </tr>
-            <tr>
-              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
-              <td><%= "412-test-importer.myshopify.com".remove(".myshopify.com") %></td>
-              <td><%= (Time.now).strftime('%b %e, %l:%M %p') %></td>
-              <td><%= (Time.now + rand(200).minutes).strftime('%b %e, %l:%M %p') %></td>
-              <td>Weekly</td>
-              <td><button class="" style="margin-right:5px;">Edit</button><button class="warning">Delete</button></td>
-              <td></td>
-            </tr>
+            <% @shop.autosync_runners.each do |autosync| %>
+              <tr>
+                <td><%= autosync.export_from_shop.shopify_domain.remove(".myshopify.com") %></td>
+                <td><%= autosync.import_to_shop.shopify_domain.remove(".myshopify.com") %></td>
+                <td><%= autosync.last_started_at.strftime('%b %e, %l:%M %p') %></td>
+                <td><%= autosync.last_ended_at.strftime('%b %e, %l:%M %p') %></td>
+                <td><%= autosync.frequency %></td>
+                <td><button class="" style="margin-right:5px;">Edit</button><button class="warning">Delete</button></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
       </div>
