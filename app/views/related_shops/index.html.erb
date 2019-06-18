@@ -1,5 +1,14 @@
-<h1 class="title">Your Shops</h1>
 <section>
+  <article>
+    <div class="column one-half">
+      <h1>Your Shops</h1>
+    </div>
+    <div class="column one-half">
+      <%= link_to "Add Another Shop", new_related_shop_path, class: "pull-right button" %>
+    </div>
+  </article>
+</section>
+<section class="no-border">
   <article>
     <div class="card">
       <div class="overflow-container">
@@ -12,21 +21,17 @@
             </tr>
           </thead>
           <tbody>
+            <% @shop.related_shops.each do |shop| %>
+              <tr>
+                <td><%= shop.shopify_domain.remove(".myshopify.com") %></td>
+                <td><%= shop.sync_token %></td>
+                <td><button class="warning">Remove</button></td>
+              </tr>
+            <% end %>
             <tr>
-              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
-              <td><%= @shop.sync_token %></td>
-              <td><button class="secondary">View Report</button></td>
-            </tr>
-            <tr>
-              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
-              <td><%= @shop.sync_token %></td>
-              <td><button class="secondary">View Report</button></td>
-            </tr>
-            <tr>
-              <td><%= "412-test-exporter.myshopify.com".remove(".myshopify.com") %></td>
-              <td><%= @shop.sync_token %></td>
-              <td><button class="secondary">View Report</button></td>
-              <td></td>
+              <td colspan="3" class="text-center">
+                <%= link_to "Add Another Shop", new_related_shop_path, class: "button" %>
+              </td>
             </tr>
           </tbody>
         </table>

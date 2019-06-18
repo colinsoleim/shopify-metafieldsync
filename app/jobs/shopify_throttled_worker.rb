@@ -1,8 +1,8 @@
 # An example of usage
-# 1000.times { ShopifyThrottledWorker.perform_async(
+# ShopifyThrottledWorker.perform_async(
 #   service: "ServiceClass",
-#   args: MultiJson.dump(shop_id: shop.id, some_arg: 0)
-# ) }
+#   args: MultiJson.dump(shop_id: shop.id, product_id: product.id)
+# )
 
 class ShopifyThrottledWorker
   include Sidekiq::Worker

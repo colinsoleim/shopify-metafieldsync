@@ -1,20 +1,40 @@
 class Shop < ActiveRecord::Base
   include ShopifyApp::SessionStorage
 
-  def related_shops
-    Shop.all
+  belongs_to :master_shop, foreign_key: :master_shop_id, class_name: "Shop", optional: true
+  has_many :shops, foreign_key: :master_shop_id, class_name: "Shop"
+  has_many :shop_syncs
+  has_many :autosync_runners
+  
+  after_create :add_sync_token
+  after_create :add_master_shop_id
+
+  validates_presence_of :email
+  
+  def add_sync_token
+    if self.sync_token.nil?
+      update(sync_token: SyncTokenGenerator.generate_code)
+    end
   end
 
-  def metafield_syncs
-    MetafieldSync.all
+  def add_master_shop_id
+    if master_shop_id.nil?
+      update(master_shop_id: self.id)
+    end
+  end
+
+  def related_shops
+    if master_shop
+      master_shop.shops
+    end
+  end
+
+  def shop_syncs
+    ShopSync.where(master_shop_id: id)
   end
 
   def autosync_runners
-    MetafieldSync.all
-  end
-
-  def sync_token
-    SecureRandom.hex
+    AutosyncRunner.where(master_shop_id: id)
   end
 
   def api_version

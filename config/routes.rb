@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   resources :related_shops, only: [:index, :new, :create]
   resources :shops, only: [:edit, :update]
-  resources :metafield_syncs, only: [:index, :show]
-  resources :autosync_runners, only: [:index, :new, :create]
+  resources :shop_syncs, only: [:index, :show]
+  resources :autosync_runners, only: [:index, :new, :create, :show]
 
   root to: "dashboard#show"
 end

@@ -1,5 +1,4 @@
-<h1 class="title">Recent Sync Reports</h1>
-<br/>
+<h1 class="title">All Sync Reports</h1>
 <section>
   <article>
     <div class="card">
@@ -16,7 +15,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @shop.shop_syncs.last(10).each do |sync| %>
+            <% @shop.shop_syncs.each do |sync| %>
               <tr>
                 <td><%= sync.export_from_shop.shopify_domain.remove(".myshopify.com") %></td>
                 <td><%= sync.import_to_shop.shopify_domain.remove(".myshopify.com") %></td>
@@ -31,31 +30,4 @@
       </div>
     </div>
   </article>
-</section>
-<section>
-  <div class="column">
-    <article>
-      <div class="card columns four">
-        <h5>Add Another Shop</h5>
-
-        <p>Add a new shop to sync shopify data between both of them.</p>
-
-        <p><%= link_to "Add Another Shop", new_related_shop_path, class: "button" %></p>
-      </div>
-      <div class="card columns four">
-        <h5>Setup Auto-Sync</h5>
-
-        <p>Start running syncs on a weekly, daily, or hourly basis.</p>
-
-        <p><a href="https://github.com/shoppad/uptowncss/archive/master.zip" class="button download" target="_blank">Setup Auto-Sync</a></p>
-      </div>
-      <div class="card columns four">
-        <h5>Update Personal Info</h5>
-
-        <p>Change your contact information, timezone, or payment plan.</p>
-
-        <p><a href="https://github.com/shoppad/uptowncss/" class="button download" target="_blank">Update Personal Info</a></p>
-      </div>
-    </article>
-  </div>
 </section>

@@ -5,15 +5,31 @@
   </aside>
   <article>
     <div class="card has-sections contact-info">
-      <div class="card-section">
-        <div>
-          <div class="column one-half"><label class="form-label">First Name </label><input name="first_name" type="text"></div>
-          <div class="column one-half"><label class="form-label">Last Name </label><input name="last_name" type="text"></div>
+      <%= form_for @shop do |form| %>
+        <div class="card-section">
+          <div class="">
+            <div class="form-group column one-half">
+              <label class="form-label">First Name </label>
+              <!-- <input name="first_name" type="text"> -->
+              <%= form.text_field :first_name %>
+            </div>
+            <div class="form-group column one-half">
+              <label class="form-label">Last Name </label>
+              <!--  <input name="last_name" type="text"> -->
+              <%= form.text_field :last_name %>
+            </div>
+          </div>
+          <div class="">
+            <div class="form-group column">
+              <label class="form-label">Email Address </label>
+              <!-- <input name="email" type="text"> -->
+              <%= form.text_field :email %>
+            </div>
+          </div>
+          <!-- <button type="submit">Submit Invitation</button> -->
+          <%= form.submit %>
         </div>
-        <div>
-          <div class="column"><label class="form-label">Email Address </label><input name="email" type="text"></div>
-        </div>
-      </div>
+      <% end %>
     </div>
   </article>
 </section>
