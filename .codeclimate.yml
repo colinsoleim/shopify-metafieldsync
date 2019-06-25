@@ -2,5 +2,5 @@ plugins:
   rubocop:
     enabled: true
     config:
-      file: rubocop.yml
+      file: .rubocop.yml
       channel: rubocop-0-71
