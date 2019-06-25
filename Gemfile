@@ -33,8 +33,8 @@ group :development, :test do
   gem "dotenv-rails"
   gem "pry"                                   # Console Improvements
   gem "rb-readline"                           # Error Logging
-  gem "rubocop", require: false               # Style Monitoring
-  gem "rubocop-performance", require: false   # Performance Monitoring
+  gem "rubocop"                               # Style Monitoring
+  gem "rubocop-performance"                   # Performance Monitoring
   # gem "shopify-mock", git: "https://github.com/colinsoleim/shopify-mock.git" # Shopify Test Doubles
 end
 
