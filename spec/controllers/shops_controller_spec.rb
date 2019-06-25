@@ -19,13 +19,13 @@ describe ShopsController do
     end
 
     it "redirects to edit_shop_path" do
-      put :update, params: { id: @shop.id, shop: { first_name: "asdf", last_name: "asdf", email: "asdf" } }
+      put :update, params: { id: @shop.id, shop: { email: "asdf" } }
 
       expect(controller).to redirect_to(edit_shop_path)
     end
 
     it "redirects to edit_shop_path" do
-      put :update, params: { id: @shop.id, shop: { first_name: "asdf", last_name: "asdf", email: nil } }
+      put :update, params: { id: @shop.id, shop: { email: nil } }
 
       expect(controller).to redirect_to(edit_shop_path)
     end

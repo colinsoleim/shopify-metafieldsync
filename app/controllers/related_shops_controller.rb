@@ -6,7 +6,7 @@ class RelatedShopsController < AuthenticatedController
   def new; end
 
   def create
-    if @shop and params[:sync_token] and Shop.exists?(sync_token: params[:sync_token])
+    if @shop && params[:sync_token] && Shop.exists?(sync_token: params[:sync_token])
       # find out which shop should be the master from some paid variable
       @shop.master_shop = Shop.find_by(sync_token: params[:sync_token])
       @shop.save

@@ -1,3 +1,15 @@
+<section>
+  <article>
+    <div class="alert columns twelve">
+      <dl>
+        <dt>Run Your First Sync</dt>
+        <dd>You haven't run any syncs yet, click here to start syncing your shops.</dd>
+      </dl>
+      <%= link_to "Start A Sync", new_shop_sync_path, class: "button" %>
+    </div>
+  </article>
+</section>
+
 <h1 class="title">Recent Sync Reports</h1>
 <br/>
 <section>
@@ -18,10 +30,10 @@
           <tbody>
             <% @shop.shop_syncs.last(10).each do |sync| %>
               <tr>
-                <td><%= sync.export_from_shop.shopify_domain.remove(".myshopify.com") %></td>
-                <td><%= sync.import_to_shop.shopify_domain.remove(".myshopify.com") %></td>
-                <td><%= sync.started_at.strftime('%b %e, %l:%M %p') %></td>
-                <td><%= sync.ended_at.strftime('%b %e, %l:%M %p') %></td>
+                <td><%= sync.export_from_shop.shopify_domain&.remove(".myshopify.com") %></td>
+                <td><%= sync.import_to_shop.shopify_domain&.remove(".myshopify.com") %></td>
+                <td><%= sync.started_at&.strftime('%b %e, %l:%M %p') %></td>
+                <td><%= sync.ended_at&.strftime('%b %e, %l:%M %p') %></td>
                 <td><span class="tag green"><%= sync.status %></span></td>
                 <td><%= link_to "View Report", shop_sync_path(sync), class: "button secondary" %></td>
               </tr>

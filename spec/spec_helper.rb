@@ -56,5 +56,15 @@ RSpec.configure do |config|
           'X-Shopify-Access-Token'=>'56c0055a3a84063b626e55a19173ee29'
            }).
          to_return(status: 200, body: "{\"id\":7133116498002,\"namespace\":\"namespace\",\"key\":\"key\",\"value\":\"value\",\"value_type\":\"string\",\"description\":\"description\",\"owner_id\":2549162803282,\"created_at\":\"2019-06-05T17:58:32-04:00\",\"updated_at\":\"2019-06-05T17:58:32-04:00\",\"owner_resource\":\"product\",\"admin_graphql_api_id\":\"gid://shopify/Metafield/7133116498002\"}", headers: {})
+
+    WebMock.stub_request(:get, "https://412-test.myshopify.com/admin/api/2019-04/products/count.json").
+         with(
+           headers: {
+          'Accept'=>'application/json',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'ShopifyAPI/7.0.1 ActiveResource/5.1.0 Ruby/2.6.3',
+          'X-Shopify-Access-Token'=>'56c0055a3a84063b626e55a19173ee29'
+           }).
+         to_return(status: 200, body: "1", headers: {})
   end
 end
