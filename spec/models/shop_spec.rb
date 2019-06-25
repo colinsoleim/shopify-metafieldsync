@@ -9,22 +9,21 @@ describe Shop do
     end
   end
 
-  describe "#pull_metafields_from" do
-    it "should call to SyncMetafields service object" do
-      shop = create(:shop)
-      second_shop = create(:second_shop)
-      metafield = create(:metafield)
+  describe "#import_products" do
+    it "starts the ShopifyThrottledWorker job with ProductImporter service" do
+      @shop = create(:shop)
 
       allow(ShopifyThrottledWorker).
         to receive(:perform_async).
         with(
-          service: "MetafieldSyncer",
+          service: "ProductImporter",
           args: MultiJson.dump(
-            shop_id: shop.id,
-            shopify_metafield_id: metafield.shopify_id,
+            shop_id: @shop.id,
+            page_count: 1,
           ),
         )
-      shop.pull_metafields_from(second_shop)
+
+      @shop.import_products
       expect(ShopifyThrottledWorker).to have_received(:perform_async)
     end
   end

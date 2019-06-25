@@ -3,6 +3,9 @@ require "sidekiq/web"
 require "sidekiq-rate-limiter/server"
 
 unless Rails.env.development?
+  require "sidekiq/testing"
+  Sidekiq::Testing.inline!
+
   Sidekiq::Web.use(Rack::Auth::Basic) do |user, password|
     user == ENV["SIDEKIQ_USER"] &&
       password == ENV["SIDEKIQ_PASSWORD"]

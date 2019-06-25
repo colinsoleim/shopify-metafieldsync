@@ -1,0 +1,26 @@
+<section>
+  <aside>
+    <h2>Contact Information</h2>
+    <p>Your contact information is for internal purposes only. It allows us to alert you when you're reaching your usage limit.</p>
+  </aside>
+  <article>
+    <div class="card has-sections contact-info">
+      <%= form_for ShopSync.new do |form| %>
+        <div class="card-section">
+          <div class="">
+            <div class="form-group column one-half">
+              <label class="form-label">Import To Shop ID </label>
+              <%= form.text_field :import_to_shop_id %>
+            </div>
+            <div class="form-group column one-half">
+              <label class="form-label">Export From Shop ID </label>
+              <%= form.text_field :export_from_shop_id %>
+            </div>
+          </div>
+          <!-- <button type="submit">Submit Invitation</button> -->
+          <%= form.submit "Start Sync" %>
+        </div>
+      <% end %>
+    </div>
+  </article>
+</section>

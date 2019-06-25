@@ -15,10 +15,10 @@
           </thead>
           <tbody>
             <tr>
-              <td><%= @shop_sync.export_from_shop.shopify_domain.remove(".myshopify.com") %></td>
-              <td><%= @shop_sync.import_to_shop.shopify_domain.remove(".myshopify.com") %></td>
-              <td><%= @shop_sync.started_at.strftime('%b %e, %l:%M %p') %></td>
-              <td><%= @shop_sync.ended_at.strftime('%b %e, %l:%M %p') %></td>
+              <td><%= @shop_sync.export_from_shop.shopify_domain&.remove(".myshopify.com") %></td>
+              <td><%= @shop_sync.import_to_shop.shopify_domain&.remove(".myshopify.com") %></td>
+              <td><%= @shop_sync.started_at&.strftime('%b %e, %l:%M %p') %></td>
+              <td><%= @shop_sync.ended_at&.strftime('%b %e, %l:%M %p') %></td>
               <td><span class="tag green"><%= @shop_sync.status %></span></td>
             </tr>
           </tbody>
