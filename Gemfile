@@ -14,10 +14,10 @@ gem "bootsnap", ">= 1.1.0", require: false  # Reduces boot times through caching
 gem "jbuilder", "~> 2.5"                    # JSON support
 gem "jquery-rails"                          # Jquery support
 gem "kaminari"                              # Pagination
-gem "mini_magick", "~> 4.8"                 # Use ActiveStorage variant
+gem "mini_magick", "~> 4.9"                 # Use ActiveStorage variant
 gem "mixpanel-ruby"                         # Monitoring
 gem "newrelic_rpm"                          # Performance Monitoring
-gem "puma", "~> 3.0"
+gem "puma", "~> 3.12"
 gem "redis", "~> 4.0"
 gem "rest-client"
 gem "sassc-rails"                           # Frontend
