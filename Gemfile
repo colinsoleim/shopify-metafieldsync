@@ -17,7 +17,7 @@ gem "kaminari"                              # Pagination
 gem "mini_magick", "~> 4.8"                 # Use ActiveStorage variant
 gem "mixpanel-ruby"                         # Monitoring
 gem "newrelic_rpm"                          # Performance Monitoring
-gem "puma", "~> 3.0"
+gem "puma", "~> 3.12"
 gem "redis", "~> 4.0"
 gem "rest-client"
 gem "sassc-rails"                           # Frontend
